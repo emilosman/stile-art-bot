@@ -1,7 +1,11 @@
-<%= @board.title %>
+<%= link_to @board.title, @board %>
 
 <dropzone></dropzone>
 
-<% @board.items.each do |item| %>
-  <%= image_tag item.image, width: '200px' if item.image.present? %>
-<% end %>
+<div class=row>
+  <div class="col">
+    <% @board.items.each do |item| %>
+      <%= image_tag item.image, width: '200px' if item.image.present? %>
+    <% end %>
+  </div>
+</div>

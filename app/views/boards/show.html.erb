@@ -1,6 +1,10 @@
 <%= @board.title %>
 <%= link_to 'edit', edit_board_path(@board) %>
 
-<% @board.items.each do |item| %>
-  <%= image_tag item.image, width: '200px' %>
-<% end %>
+<div class=row>
+  <div class="col">
+    <% @board.items.each do |item| %>
+      <%= image_tag item.image if item.image.present? %>
+    <% end %>
+  </div>
+</div>
