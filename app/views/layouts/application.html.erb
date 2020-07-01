@@ -9,6 +9,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'vue_app' %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
     <% if @board %>
       <meta name="board-id" content="<%= @board.id %>">
     <% end %>
@@ -17,7 +19,7 @@
   <body>
     <div class="container-fluid" id="app">
       <h1>
-        <%= link_to "moodboard", root_path %>
+        <%= link_to "moonboard", root_path %>
       </h1>
       <%= yield %>
     </div>
