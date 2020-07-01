@@ -1,6 +1,14 @@
 class ItemsController < ApplicationController
   def create
-    Item.create create_params
+    item = Item.create(board_id: params[:board_id])
+
+    item.image.attach params[:image]
+
+    if item.image.attached?
+      item.save
+    else
+      item.delete
+    end
   end
 
   private

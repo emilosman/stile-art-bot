@@ -1,7 +1,5 @@
 class Item < ApplicationRecord
-  validates :image, presence: true
-
   belongs_to :board
 
-  has_one_attached :image
+  has_one_attached :image, dependent: :purge
 end
