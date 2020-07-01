@@ -1,3 +1,3 @@
 class Board < ApplicationRecord
-  has_many_attached :images
+  has_many :items
 end
