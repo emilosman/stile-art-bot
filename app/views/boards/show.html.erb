@@ -1,2 +1,6 @@
 <%= @board.title %>
 <%= link_to 'edit', edit_board_path(@board) %>
+
+<% @board.items.each do |item| %>
+  <%= image_tag item.image, width: '200px' %>
+<% end %>

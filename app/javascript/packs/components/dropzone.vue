@@ -13,10 +13,15 @@
     data: function () {
       return {
         dropzoneOptions: {
-            url: 'https://httpbin.org/post',
+            url: '/items',
             thumbnailWidth: 150,
-            maxFilesize: 0.5,
-            headers: { "My-Awesome-Header": "header value" }
+            paramName: "image",
+            params: {
+              "board_id": 'b6f715b1-a29a-4f68-9003-3bcc107f97c7',
+            },
+            headers: {
+              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
         }
       }
     }
