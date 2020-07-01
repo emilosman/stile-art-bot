@@ -4,7 +4,9 @@
 <div class=row>
   <div class="col">
     <% @board.items.each do |item| %>
-      <%= image_tag item.image if item.image.present? %>
+      <%= link_to item.image do %>
+        <%= image_tag item.image if item.image.present? %>
+      <% end %>
     <% end %>
   </div>
 </div>

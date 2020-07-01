@@ -1,7 +1,7 @@
 <ul>
   <% @boards.each do |board| %>
     <li>
-      <%= link_to board.title, board_path(board) %>
+      <%= link_to board.title, edit_board_path(board) %>
     </li>
   <% end %>
 </ul>
