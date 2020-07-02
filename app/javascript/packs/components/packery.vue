@@ -12,7 +12,7 @@
   >
     <div
       class="dashboard-item"
-      v-for='item in items'
+      v-for='item in orderedItems'
       v-packery-item
       v-draggabilly
       :key="item.position"
@@ -78,6 +78,11 @@
         axios.patch(`/items/${item.id}`, {
           text: item.text
         })
+      }
+    },
+    computed: {
+      orderedItems: function () {
+        return this.items.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
       }
     }
   };
