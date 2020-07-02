@@ -30,8 +30,11 @@
         <textarea type="text" v-model="item.text" @change="updateItem(item)" class="image-comment" placeholder="Optional comment here">
         </textarea>
       </div>
-      <div v-else>
+      <div v-else class="show-image">
         <a :href="item.image_url">
+          <div class="comment-overlay" v-if="item.text">
+            {{item.text}}
+          </div>
           <img v-if="item.image_url" :src="item.image_url"/>
         </a>
       </div>

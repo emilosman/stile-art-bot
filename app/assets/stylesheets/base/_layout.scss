@@ -96,3 +96,26 @@ h1, h2, h3, h4, h5, h6 {
   resize: none;
   height: 84px;
 }
+
+.show-image {
+  position: relative;
+}
+
+.comment-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: opacity 0.25s;
+  color: black;
+  &:hover {
+    z-index: 1;
+    opacity: 0.8;
+  }
+}
