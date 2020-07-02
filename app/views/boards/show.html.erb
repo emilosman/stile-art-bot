@@ -1,12 +1,2 @@
 <%= @board.title %>
 <%= link_to 'edit', edit_board_path(@board) %>
-
-<div class=row>
-  <div class="col">
-    <% @board.items.each do |item| %>
-      <%= link_to item.image do %>
-        <%= image_tag item.image if item.image.present? %>
-      <% end %>
-    <% end %>
-  </div>
-</div>

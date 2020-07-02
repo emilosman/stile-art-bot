@@ -7,10 +7,13 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "axios": "^0.19.2",
+    "packery": "^2.1.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-binpacker-plugin": "^1.1.0",
     "vue-loader": "^15.9.3",
+    "vue-packery-draggabilly-plugin": "^1.0.3",
+    "vue-packery-plugin": "^1.4.8",
     "vue-template-compiler": "^2.6.11",
     "vue-turbolinks": "^2.1.0",
     "vue2-dropzone": "^3.6.0"
