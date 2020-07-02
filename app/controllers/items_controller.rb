@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
 
     if item.image.attached?
       item.save
-    else
-      item.delete
     end
+
+    render json: item.to_json({methods: :image_url}), status: 200
   end
 
   private

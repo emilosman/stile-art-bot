@@ -1,5 +1,11 @@
 <template>
-  <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></vue-dropzone>
+  <vue-dropzone
+    id="dropzone"
+    ref="dropzone"
+    :options="dropzoneOptions"
+    @vdropzone-success="uploadComplete"
+    >
+  </vue-dropzone>
 </template>
 
 <script>
@@ -20,12 +26,19 @@
           thumbnailWidth: 150,
           paramName: "image",
           params: {
+            "position": 0,
             "board_id": document.querySelector('meta[name="board-id"]').getAttribute('content')
           },
           headers: {
             "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
           }
         }
+      }
+    },
+    methods: {
+      uploadComplete: function(file, response) {
+        this.items.push(response)
+        this.$refs.dropzone.removeAllFiles()
       }
     }
   }

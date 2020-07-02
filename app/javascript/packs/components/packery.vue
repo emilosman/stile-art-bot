@@ -1,32 +1,32 @@
 <template>
+  <div
+    class="dashboard"
+    v-packery="{
+      itemSelector: '.dashboard-item',
+      columnWidth: '.grid-sizer',
+      gutter: '.gutter-sizer',
+      stagger: 30,
+    }"
+    @layoutComplete="layoutComplete()"
+    @dragItemPositioned="updateOrder()"
+  >
     <div
-      class="dashboard"
-      v-packery="{
-        itemSelector: '.dashboard-item',
-        columnWidth: '.grid-sizer',
-        gutter: '.gutter-sizer',
-        stagger: 30,
+      class="dashboard-item"
+      v-for='item in items'
+      v-packery-item
+      v-draggabilly
+      :key="item.position"
+      :data-packery="{
+        columns: 1,
+        rows: 2
       }"
-      @layoutComplete="layoutComplete()"
-      @dragItemPositioned="updateOrder()"
+      :data-id="item.id"
     >
-      <div
-        class="dashboard-item"
-        v-for='item in items'
-        v-packery-item
-        v-draggabilly
-        :key="item.position"
-        :data-packery="{
-          columns: 1,
-          rows: 2
-        }"
-        :data-id="item.id"
-      >
-        <div class="grid-sizer"></div>
-        <div class="gutter-sizer"></div>
-        <img v-if="item.image_url" :src="item.image_url"/>
-      </div>
+      <div class="grid-sizer"></div>
+      <div class="gutter-sizer"></div>
+      <img v-if="item.image_url" :src="item.image_url"/>
     </div>
+  </div>
 </template>
 
 
