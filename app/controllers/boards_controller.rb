@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit]
+  before_action :find_board, only: [:show, :edit, :items]
 
   def index
     @boards = Board.all
@@ -20,6 +20,10 @@ class BoardsController < ApplicationController
   def edit;end
 
   def update;end
+
+  def items
+    render json: @board.to_json( include: {items: {methods: :image_url}} ), status: 200
+  end
 
   private
   def find_board
