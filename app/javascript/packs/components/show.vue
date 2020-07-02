@@ -1,12 +1,10 @@
 <template>
   <div>
-    <dropzone :items="items" class="mb-4"></dropzone>
-    <packery :items="items"></packery>
+    <packery :items="items" :editing="editing"></packery>
   </div>
 </template>
 
 <script>
-  import dropzone from './dropzone'
   import packery from './packery'
   import axios from 'axios'
 
@@ -16,7 +14,7 @@
     data() {
       return {
         items: [],
-        editing: true
+        editing: false
       }
     },
     mounted () {
@@ -26,7 +24,6 @@
       })
     },
     components: {
-      dropzone,
       packery
     }
   }

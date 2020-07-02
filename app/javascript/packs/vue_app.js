@@ -7,6 +7,7 @@ import VueDraggabillyPlugin from 'vue-packery-draggabilly-plugin'
 
 
 import editor from './components/editor'
+import show from './components/show'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VuePackeryPlugin)
@@ -16,7 +17,8 @@ document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
     el: '#app',
     components: {
-      editor
+      editor,
+      show
     }
   })
 })

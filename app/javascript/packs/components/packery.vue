@@ -39,7 +39,8 @@
   export default {
     ready: function() {},
     props: {
-      items: Array
+      items: Array,
+      editing: Boolean
     },
     methods: {
       layoutComplete: function() {
