@@ -3,24 +3,24 @@
       class="dashboard"
       v-packery="{
         itemSelector: '.dashboard-item',
-        percentPosition: true,
         columnWidth: '.grid-sizer',
         gutter: '.gutter-sizer',
         stagger: 30,
       }"
-      @layoutComplete="doStuff()"
+      @layoutComplete="layoutComplete()"
+      @dragItemPositioned="updateOrder()"
     >
       <div
         class="dashboard-item"
         v-for='item in items'
         v-packery-item
         v-draggabilly
-        :key="item.order"
-        @dragEnd="doStuff()"
+        :key="item.position"
         :data-packery="{
           columns: 1,
           rows: 2
         }"
+        :data-id="item.id"
       >
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
@@ -47,17 +47,27 @@
       let boardId = document.querySelector('meta[name="board-id"]').getAttribute('content');
       axios.get(`/boards/${boardId}/items`).then((response)=> {
           this.items = response.data.items
-          console.log(this.items)
       })
     },
     methods: {
-      doStuff: function() {
+      layoutComplete: function() {
         packeryEvents.$emit("layout", this.$el);
-        console.log("Packery!");
-        console.log([this.$el]);
       },
-      reLayout: function() {
-        console.log(this.$refs.dashboard);
+      updateOrder: function() {
+        let boardId = document.querySelector('meta[name="board-id"]').getAttribute('content');
+
+        packeryEvents.$emit("layout", this.$el);
+
+        let itemElements = this.$el.packery.getItemElements()
+
+        let orderedItems = itemElements.map(function(item, index){
+          return({item_id: item.dataset.id, position: index})
+        })
+
+        axios.patch(`/boards/${boardId}`, {
+          orderedItems: orderedItems
+        })
+        
       },
     }
   };

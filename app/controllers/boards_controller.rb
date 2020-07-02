@@ -19,7 +19,13 @@ class BoardsController < ApplicationController
 
   def edit;end
 
-  def update;end
+  def update
+    if params[:orderedItems]
+      params[:orderedItems].each do |item|
+        Item.find(item[:item_id]).update(position: item[:position])
+      end
+    end
+  end
 
   def items
     render json: @board.to_json( include: {items: {methods: :image_url}} ), status: 200
