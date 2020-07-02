@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :find_item, only:[:update, :destroy]
+
   def create
     item = Item.new permit_params
     last_position = Board.find(params[:board_id]).items.maximum('position') || 0
@@ -9,11 +11,18 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find params[:id]
-    item.update permit_params
+    @item.update permit_params
+  end
+
+  def destroy
+    @item.destroy
   end
 
   private
+  def find_item
+    @item = Item.find params[:id]
+  end
+
   def permit_params
     params.permit(:board_id, :image, :position, :text, :id, :item)
   end

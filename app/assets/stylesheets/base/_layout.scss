@@ -18,8 +18,24 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-family: "FuturaBold", sans-serif;
+  a {
+    font-family: "FuturaBold", sans-serif;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: none;
+  &:hover, &:link, &:active, &:visited {
+    text-decoration: none !important;
+  }
 }
 
 .gutter-sizer {
@@ -99,6 +115,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .show-image {
   position: relative;
+  &:hover {
+    .item-delete {
+      opacity: 1;
+    }
+  }
 }
 
 .comment-overlay {
@@ -118,4 +139,14 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
     opacity: 0.8;
   }
+}
+
+.item-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  transition: opacity 0.25s;
 }
