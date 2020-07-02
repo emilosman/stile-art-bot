@@ -5,8 +5,8 @@ import Vue from 'vue/dist/vue.esm'
 import VuePackeryPlugin from 'vue-packery-plugin'
 import VueDraggabillyPlugin from 'vue-packery-draggabilly-plugin'
 
-import dropzone from './components/dropzone'
-import packery from './components/packery'
+
+import editor from './components/editor'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VuePackeryPlugin)
@@ -16,8 +16,7 @@ document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
     el: '#app',
     components: {
-      dropzone,
-      packery
+      editor
     }
   })
 })

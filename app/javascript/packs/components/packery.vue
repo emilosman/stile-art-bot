@@ -38,16 +38,8 @@
 
   export default {
     ready: function() {},
-    data() {
-      return {
-        items: []
-      }
-    },
-    mounted () {
-      let boardId = document.querySelector('meta[name="board-id"]').getAttribute('content');
-      axios.get(`/boards/${boardId}/items`).then((response)=> {
-          this.items = response.data.items
-      })
+    props: {
+      items: Array
     },
     methods: {
       layoutComplete: function() {

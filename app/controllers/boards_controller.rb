@@ -37,6 +37,6 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title)
+    params.require(:board).permit(:title, :position)
   end
 end

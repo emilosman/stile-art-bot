@@ -10,18 +10,21 @@
     components: {
       vueDropzone: vue2Dropzone
     },
+    props: {
+      items: Array
+    },
     data: function () {
       return {
         dropzoneOptions: {
-            url: '/items',
-            thumbnailWidth: 150,
-            paramName: "image",
-            params: {
-              "board_id": document.querySelector('meta[name="board-id"]').getAttribute('content')
-            },
-            headers: {
-              "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
+          url: '/items',
+          thumbnailWidth: 150,
+          paramName: "image",
+          params: {
+            "board_id": document.querySelector('meta[name="board-id"]').getAttribute('content')
+          },
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          }
         }
       }
     }
