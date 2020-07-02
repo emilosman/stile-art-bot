@@ -24,7 +24,17 @@
     >
       <div class="grid-sizer"></div>
       <div class="gutter-sizer"></div>
-      <img v-if="item.image_url" :src="item.image_url"/>
+
+      <div v-if="editing">
+        <img v-if="item.image_url" :src="item.image_url"/>
+        <textarea type="text" v-model="item.text" @change="updateItem(item)" class="image-comment" placeholder="Optional comment here">
+        </textarea>
+      </div>
+      <div v-else>
+        <a :href="item.image_url">
+          <img v-if="item.image_url" :src="item.image_url"/>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -60,8 +70,12 @@
         axios.patch(`/boards/${boardId}`, {
           orderedItems: orderedItems
         })
-        
       },
+      updateItem: function(item) {
+        axios.patch(`/items/${item.id}`, {
+          text: item.text
+        })
+      }
     }
   };
 </script>

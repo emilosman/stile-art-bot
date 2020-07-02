@@ -1,7 +1,7 @@
 <template>
   <div>
     <dropzone :items="items" class="mb-4"></dropzone>
-    <packery :items="items"></packery>
+    <packery :items="items" :editing="editing"></packery>
   </div>
 </template>
 
