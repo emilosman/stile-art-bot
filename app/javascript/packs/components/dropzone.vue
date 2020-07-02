@@ -26,7 +26,6 @@
           thumbnailWidth: 150,
           paramName: "image",
           params: {
-            "position": 0,
             "board_id": document.querySelector('meta[name="board-id"]').getAttribute('content')
           },
           headers: {

@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   def create
-    item = Item.create permit_params
+    item = Item.new permit_params
+    last_position = Board.find(params[:board_id]).items.maximum('position') || 0
+    item.position = last_position + 1
+    item.save
 
     render json: item.to_json({methods: :image_url}), status: 200
   end
