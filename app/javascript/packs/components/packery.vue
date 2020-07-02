@@ -34,7 +34,7 @@
         </textarea>
       </div>
       <div v-else class="show-image">
-        <a :href="item.image_url">
+        <a :href="item.image_url" target="_blank">
           <div class="comment-overlay" v-if="item.text">
             {{item.text}}
           </div>
