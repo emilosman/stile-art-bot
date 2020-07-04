@@ -50,6 +50,10 @@ a {
   }
 }
 
+.dashboard--bw {
+  filter: grayscale(100%);
+}
+
 .grid-sizer,
 .dashboard-item,
 [data-columns="1"] {
@@ -170,5 +174,13 @@ a {
   }
   @media (max-width: 1024px) {
     display: none;
+  }
+}
+
+.bw-button {
+  cursor: pointer;
+  svg {
+    width: 25px;
+    height: 25px;
   }
 }

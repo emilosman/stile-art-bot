@@ -22,3 +22,15 @@ document.addEventListener('turbolinks:load', () => {
     }
   })
 })
+
+document.addEventListener('turbolinks:load', function () {
+  let bwButton = document.querySelector('.bw-button');
+  if (bwButton) {
+    bwButton.addEventListener('click', () => 
+      {
+        console.log('.....')
+        document.querySelector('.dashboard').classList.toggle("dashboard--bw");
+      }
+    );
+  }
+})
