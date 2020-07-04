@@ -10,6 +10,9 @@
     @layoutComplete="layoutComplete()"
     @dragItemPositioned="updateOrder()"
   >
+    <div v-if="showEmptyMessage">
+      This board is empty.
+    </div>
     <div
       class="dashboard-item"
       v-for='item in orderedItems'
@@ -93,6 +96,9 @@
     computed: {
       orderedItems: function () {
         return this.items.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
+      },
+      showEmptyMessage: function() {
+        return this.items.length == 0 && !this.editing
       }
     }
   };
