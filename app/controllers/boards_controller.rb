@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
   def create
     board = Board.create(title: board_params[:title])
 
-    redirect_to board
+    redirect_to edit_board_path(board)
   end
 
   def show;end
