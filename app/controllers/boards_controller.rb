@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :find_board, only: [:show, :edit, :items]
+  before_action :authenticate_user, except: [:share, :items]
 
   def index
     @boards = Board.all
@@ -43,5 +44,13 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:title, :position)
+  end
+
+  def authenticate_user
+    if Rails.env.production?
+      authenticate_or_request_with_http_basic do |name, password|
+        name == ENV['USERNAME'] && password == ENV['PASSWORD']
+      end
+    end
   end
 end
