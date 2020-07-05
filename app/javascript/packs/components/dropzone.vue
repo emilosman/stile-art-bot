@@ -36,7 +36,7 @@
     methods: {
       uploadComplete: function(file, response) {
         this.items.push(response)
-        this.$refs.dropzone.removeAllFiles()
+        this.$refs.dropzone.removeFile(file)
       }
     }
   }
