@@ -23,10 +23,27 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     props: {
       item: Object,
+      items: Array,
       editing: Boolean
     },
+    methods: {
+      updateItem: function(item) {
+        axios.patch(`/items/${item.id}`, {
+          text: item.text
+        })
+      },
+      deleteItem: function(item) {
+        if (confirm("Are you sure you want to delete this item?")) {
+          let indexOfItem = this.items.indexOf(item);
+          this.items = this.items.splice(indexOfItem, 1)
+          axios.delete(`/items/${item.id}`)
+        }
+      },
+    }
   }
 </script>

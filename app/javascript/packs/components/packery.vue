@@ -27,7 +27,7 @@
       }"
       :data-id="item.id"
     >
-      <item :item="item" :editing="editing"></item>
+      <item :item="item" :items="orderedItems" :editing="editing"></item>
     </div>
 
     <div
@@ -79,19 +79,7 @@
         axios.patch(`/boards/${boardId}`, {
           orderedItems: orderedItems
         })
-      },
-      updateItem: function(item) {
-        axios.patch(`/items/${item.id}`, {
-          text: item.text
-        })
-      },
-      deleteItem: function(item) {
-        if (confirm("Are you sure you want to delete this item?")) {
-          let indexOfItem = this.items.indexOf(item);
-          this.items = this.items.splice(indexOfItem, 1)
-          axios.delete(`/items/${item.id}`)
-        }
-      },
+      }
     },
     computed: {
       orderedItems: function () {
