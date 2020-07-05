@@ -21,10 +21,6 @@ class BoardsController < ApplicationController
     redirect_to boards_path
   end
 
-  def show;end
-
-  def edit;end
-
   def update
     if params[:orderedItems]
       params[:orderedItems].each do |item|
