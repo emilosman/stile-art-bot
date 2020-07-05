@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit, :items]
+  before_action :find_board, only: [:show, :edit, :items, :destroy]
   before_action :authenticate_user, except: [:share, :items]
 
   def index
@@ -14,6 +14,11 @@ class BoardsController < ApplicationController
     board = Board.create(title: board_params[:title])
 
     redirect_to edit_board_path(board)
+  end
+
+  def destroy
+    @board.delete
+    redirect_to boards_path
   end
 
   def show;end
