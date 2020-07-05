@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  default_url_options :host => "localhost:3000"
+  default_url_options :host => Rails.env.production? ? "https://moonboardapp.herokuapp.com" : "localhost:3000"
 
   resources :boards do
     member do
