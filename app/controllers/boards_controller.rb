@@ -31,6 +31,11 @@ class BoardsController < ApplicationController
     render json: @board.to_json( include: {items: {methods: :image_url}} ), status: 200
   end
 
+  def share
+    @board = Board.find_by(share_id: params[:id])
+    render 'show'
+  end
+
   private
   def find_board
     @board = Board.find params[:id]

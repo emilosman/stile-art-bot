@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :items
 
+  get 'b/:id', to: 'boards#share'
   root to: 'boards#index'
 end
