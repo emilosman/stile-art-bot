@@ -7,7 +7,9 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new
+    @board = Board.new (
+      share_id: SecureRandom.uuid
+    )
   end
 
   def create
