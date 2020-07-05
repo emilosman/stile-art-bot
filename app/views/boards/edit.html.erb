@@ -1,5 +1,6 @@
 <h2>
   <%= link_to @board.title, @board %>
+  <%= link_to '[save & publish]', share_path(@board.share_id) %>
 </h2>
 
 <editor></editor>
