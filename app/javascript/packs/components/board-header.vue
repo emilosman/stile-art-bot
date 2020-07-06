@@ -27,10 +27,12 @@
     },
     methods: {
       updateBoard: function(board) {
-        axios
-          .patch(`/api/boards/${this.board.id}`, {
-            title: board.title
-          })
+        if (board.title) {
+          axios
+            .patch(`/api/boards/${this.board.id}`, {
+              title: board.title
+            })
+        }
       }
     },
     computed: {
