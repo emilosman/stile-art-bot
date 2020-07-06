@@ -7,7 +7,7 @@
   <ul class="mb-4">
     <% @boards.each do |board| %>
       <li>
-        <%= link_to board.title, edit_board_path(board) %>
+        <%= link_to board.title, share_path(board.share_id) %>
       </li>
     <% end %>
   </ul>

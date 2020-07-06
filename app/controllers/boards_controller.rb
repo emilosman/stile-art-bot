@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit, :items, :destroy]
+  before_action :find_board, only: [:edit, :items, :destroy]
 
   def index
     if Rails.env.production?
