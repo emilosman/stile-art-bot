@@ -11,7 +11,7 @@
 <script>
   import vue2Dropzone from 'vue2-dropzone'
   export default {
-    name: 'app',
+    name: 'boardDropzone',
     components: {
       vueDropzone: vue2Dropzone
     },

@@ -6,8 +6,9 @@ import VuePackeryPlugin from 'vue-packery-plugin'
 import VueDraggabillyPlugin from 'vue-packery-draggabilly-plugin'
 
 
-import editor from './components/editor'
-import show from './components/show'
+import boardEditor from './components/board-editor'
+import boardShow from './components/board-show'
+import boardHeader from './components/board-header'
 
 Vue.use(TurbolinksAdapter)
 Vue.use(VuePackeryPlugin)
@@ -17,8 +18,9 @@ document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
     el: '#app',
     components: {
-      editor,
-      show
+      boardEditor,
+      boardShow,
+      boardHeader
     }
   })
 })

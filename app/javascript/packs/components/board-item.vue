@@ -26,6 +26,7 @@
   import axios from 'axios'
 
   export default {
+    name: 'boardItem',
     props: {
       item: Object,
       items: Array,

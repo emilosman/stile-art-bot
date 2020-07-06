@@ -14,35 +14,37 @@
       This board is empty.
     </div>
 
-    <div
-      class="dashboard-item"
-      v-if="editing"
-      v-for='item in orderedItems'
-      v-packery-item
-      v-draggabilly
-      :key="item.position"
-      :data-packery="{
-        columns: 1,
-        rows: 2
-      }"
-      :data-id="item.id"
-    >
-      <item :item="item" :items="orderedItems" :editing="editing"></item>
+    <div v-if="editing">
+      <div
+        class="dashboard-item"
+        v-for='item in orderedItems'
+        v-packery-item
+        v-draggabilly
+        :key="item.position"
+        :data-packery="{
+          columns: 1,
+          rows: 2
+        }"
+        :data-id="item.id"
+      >
+        <board-item :item="item" :items="orderedItems" :editing="editing"></board-item>
+      </div>
     </div>
 
-    <div
-      class="dashboard-item"
-      v-if="!editing"
-      v-for='item in orderedItems'
-      v-packery-item
-      :key="item.position"
-      :data-packery="{
-        columns: 1,
-        rows: 2
-      }"
-      :data-id="item.id"
-    >
-      <item :item="item" :editing="editing"></item>
+    <div v-if="!editing">
+      <div
+        class="dashboard-item"
+        v-for='item in orderedItems'
+        v-packery-item
+        :key="item.position"
+        :data-packery="{
+          columns: 1,
+          rows: 2
+        }"
+        :data-id="item.id"
+      >
+        <board-item :item="item" :editing="editing"></board-item>
+      </div>
     </div>
   </div>
 </template>
@@ -51,12 +53,12 @@
 <script>
   import { packeryEvents } from "vue-packery-plugin";
   import axios from 'axios'
-  import item from './item'
+  import boardItem from './board-item'
 
   axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   export default {
-    ready: function() {},
+    name: 'boardPackery',
     props: {
       items: Array,
       editing: Boolean
@@ -90,7 +92,7 @@
       }
     },
     components: {
-      item
+      boardItem
     }
   };
 </script>

@@ -1,30 +1,34 @@
 <template>
   <div>
-    <packery :items="items" :editing="editing"></packery>
+    <board-dropzone :items="items" class="mb-4"></board-dropzone>
+    <board-packery :items="items" :editing="editing"></board-packery>
   </div>
 </template>
 
 <script>
-  import packery from './packery'
+  import boardDropzone from './board-dropzone'
+  import boardPackery from './board-packery'
   import axios from 'axios'
 
   axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   export default {
+    name: 'boardEditor',
     data() {
       return {
         items: [],
-        editing: false
+        editing: true
       }
     },
-    mounted () {
+    mounted() {
       let boardId = document.querySelector('meta[name="board-id"]').getAttribute('content');
       axios.get(`/boards/${boardId}/items`).then((response)=> {
           this.items = response.data.items
       })
     },
     components: {
-      packery
+      boardDropzone,
+      boardPackery
     }
   }
 </script>

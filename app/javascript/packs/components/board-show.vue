@@ -1,22 +1,21 @@
 <template>
   <div>
-    <dropzone :items="items" class="mb-4"></dropzone>
-    <packery :items="items" :editing="editing"></packery>
+    <board-packery :items="items" :editing="editing"></board-packery>
   </div>
 </template>
 
 <script>
-  import dropzone from './dropzone'
-  import packery from './packery'
+  import boardPackery from './board-packery'
   import axios from 'axios'
 
   axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   export default {
+    name: 'boardShow',
     data() {
       return {
         items: [],
-        editing: true
+        editing: false
       }
     },
     mounted () {
@@ -26,8 +25,7 @@
       })
     },
     components: {
-      dropzone,
-      packery
+      boardPackery
     }
   }
 </script>
