@@ -1,8 +1,10 @@
 class Board < ApplicationRecord
   has_many :items, dependent: :destroy
 
-  before_create :set_share_id
+  scope :with_items, -> { joins(:items).where.not(items: { id: nil }).uniq }
 
+  before_create :set_share_id
+  
   private
   def set_share_id
     self.share_id = SecureRandom.uuid

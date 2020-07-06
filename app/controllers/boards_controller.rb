@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :authenticate_user, except: [:share, :items]
 
   def index
-    @boards = Board.all
+    @boards = Board.with_items
   end
 
   def new
@@ -12,8 +12,6 @@ class BoardsController < ApplicationController
 
   def create
     board = Board.create(title: board_params[:title])
-
-    redirect_to edit_board_path(board)
   end
 
   def destroy
