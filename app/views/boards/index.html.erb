@@ -2,12 +2,15 @@
   <%= image_tag "tower_lineart_light_blue.png" %>
 </a>
 
-<ul>
-  <% @boards.each do |board| %>
-    <li>
-      <%= link_to board.title, edit_board_path(board) %>
-    </li>
-  <% end %>
-</ul>
+<% if @boards.present? %>
+  <div class="mt-4 mb-2">This list is visible only to you.</div>
+  <ul class="mb-4">
+    <% @boards.each do |board| %>
+      <li>
+        <%= link_to board.title, edit_board_path(board) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= link_to 'new board', new_board_path %>

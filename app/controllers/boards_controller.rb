@@ -3,7 +3,11 @@ class BoardsController < ApplicationController
   before_action :authenticate_user, except: [:share, :items]
 
   def index
-    @boards = Board.with_items
+    if Rails.env.production?
+      @boards = session[:board_ids].present? ? Board.where(id: session[:board_ids]).with_items : []
+    else
+      @boards = Board.with_items
+    end
   end
 
   def new
@@ -11,7 +15,11 @@ class BoardsController < ApplicationController
   end
 
   def create
+    session[:board_ids] = [] unless session[:board_ids].present?
+
     board = Board.create(title: board_params[:title])
+
+    session[:board_ids] << board.id
 
     redirect_to edit_board_path(board)
   end
