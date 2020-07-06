@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :authenticate_user, except: [:share, :items]
 
   def index
-    @boards = Board.with_items
+    @boards = Board.all
   end
 
   def new
