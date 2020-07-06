@@ -1,7 +1,7 @@
 <h2>
   <%= @board.title %>
 
-  <% if session[:board_ids].present? && session[:board_ids].contains(@board.id) || Rails.env.development? %>
+  <% if session[:board_ids].present? && session[:board_ids].include?(@board.id) || Rails.env.development? %>
     <%= link_to '[edit]', edit_board_path(@board), class: 'btn btn-lg btn-primary' %>
   <% end %>
 
