@@ -14,37 +14,35 @@
       This board is empty.
     </div>
 
-    <div v-if="editing">
-      <div
-        class="dashboard-item"
-        v-for='item in orderedItems'
-        v-packery-item
-        v-draggabilly
-        :key="item.position"
-        :data-packery="{
-          columns: 1,
-          rows: 2
-        }"
-        :data-id="item.id"
-      >
-        <board-item :item="item" :items="orderedItems" :editing="editing"></board-item>
-      </div>
+    <div
+      v-if="editing"
+      class="dashboard-item"
+      v-for='item in orderedItems'
+      v-packery-item
+      v-draggabilly
+      :key="item.position"
+      :data-packery="{
+        columns: 1,
+        rows: 2
+      }"
+      :data-id="item.id"
+    >
+      <board-item :item="item" :items="orderedItems" :editing="editing"></board-item>
     </div>
 
-    <div v-if="!editing">
-      <div
-        class="dashboard-item"
-        v-for='item in orderedItems'
-        v-packery-item
-        :key="item.position"
-        :data-packery="{
-          columns: 1,
-          rows: 2
-        }"
-        :data-id="item.id"
-      >
-        <board-item :item="item" :editing="editing"></board-item>
-      </div>
+    <div
+      v-if="!editing"
+      class="dashboard-item"
+      v-for='item in orderedItems'
+      v-packery-item
+      :key="item.position"
+      :data-packery="{
+        columns: 1,
+        rows: 2
+      }"
+      :data-id="item.id"
+    >
+      <board-item :item="item" :editing="editing"></board-item>
     </div>
   </div>
 </template>
