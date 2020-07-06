@@ -1,5 +1,9 @@
-<%= form_with model: @board do |f| %>
-  <%= f.text_field :title, required: true %>
-  <%= f.submit "Create" %>
+<%= form_with model: @board, class: 'form-inline mt-4' do |f| %>
+  <div class="input-group">
+    <%= f.text_field :title, required: true, placeholder: 'Board title', class: 'form-control form-control-lg' %>
+    <div class="input-group-append">
+      <%= f.submit "Create", class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
 <% end %>
 

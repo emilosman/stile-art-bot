@@ -1,9 +1,9 @@
 <template>
   <div v-if="board" class="input-group">
-    <input type="text" v-model="board.title" @change="updateBoard(board)" placeholder="Board title" class="form-control"/>
+    <input type="text" v-model="board.title" @change="updateBoard(board)" placeholder="Board title" class="form-control form-control-lg"/>
     <div class="input-group-append">
       <!-- button class="btn btn-outline-secondary" type="button">Delete</button-->
-      <a :href="shareUrl" class="btn btn-primary" type="button">Save & publish</a>
+      <a :href="shareUrl" class="btn btn-lg btn-primary" type="button">Save & publish</a>
     </div>
   </div>
 </template>
