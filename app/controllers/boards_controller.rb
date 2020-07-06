@@ -1,6 +1,5 @@
 class BoardsController < ApplicationController
   before_action :find_board, only: [:show, :edit, :items, :destroy]
-  before_action :authenticate_user, except: [:share, :items]
 
   def index
     if Rails.env.production?
