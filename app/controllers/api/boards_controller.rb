@@ -1,6 +1,11 @@
 module Api
   class BoardsController < ApplicationController 
-    before_action :find_board
+    before_action :find_board, except: :index
+
+    def index
+      @boards = Board.with_items
+      render json: @boards, status: 200
+    end
 
     def show
       render json: @board, status: 200
