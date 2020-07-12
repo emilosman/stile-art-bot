@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   has_one_attached :image, dependent: :destroy
 
   def image_url
-    url_for image
+    rails_blob_path(image, disposition: 'attachment') if image.present?
   end
 end
