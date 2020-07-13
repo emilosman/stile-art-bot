@@ -20,8 +20,8 @@
     },
     mounted () {
       let boardId = document.querySelector('meta[name="board-id"]').getAttribute('content');
-      axios.get(`/boards/${boardId}/items`).then((response)=> {
-          this.items = response.data.items
+      axios.get(`/boards/${boardId}/items${window.location.search}`).then((response)=> {
+          this.items = response.data
       })
     },
     components: {

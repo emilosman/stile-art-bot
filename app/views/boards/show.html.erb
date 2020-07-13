@@ -1,4 +1,4 @@
-<h2 class="">
+<h2>
   <%= @board.title %>
 
   <a class="bw-button" title="toggle BW">
@@ -11,3 +11,13 @@
 </h2>
 
 <board-show></board-show>
+
+<% if PAGINATE %>
+  <div class="row">
+    <div class="col">
+      <div class="my-4">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+<% end %>

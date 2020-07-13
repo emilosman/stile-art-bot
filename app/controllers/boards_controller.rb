@@ -37,11 +37,22 @@ class BoardsController < ApplicationController
   end
 
   def items
-    render json: @board.to_json( include: {items: {methods: :image_url}} ), status: 200
+    if PAGINATE
+      if params[:all]
+        @items = @board.items
+      else
+        @items = @board.items.page(params[:page])
+      end
+    else
+      @items = @board.items
+    end
+
+    render json: @items.to_json( {methods: :image_url} ), status: 200
   end
 
   def share
     @board = Board.find_by(share_id: params[:id])
+    @items = @board.items.page(params[:page])
     render 'show'
   end
 
