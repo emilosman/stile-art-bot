@@ -7,8 +7,11 @@ class ItemsController < ApplicationController
   def create
     if params[:image_url]
       image = open(params[:image_url])
+      uri = URI.parse(params[:image_url])
+      filename = File.basename(uri.path)
     else params[:image]
       image = params[:image]
+      filename = image.original_filename
     end
 
     item = Item.new(
@@ -17,7 +20,7 @@ class ItemsController < ApplicationController
       text: params[:text]
     )
 
-    item.image.attach(io: image, filename:'upload')
+    item.image.attach(io: image, filename: filename)
 
     last_position = Board.find(params[:board_id]).items.maximum('position') || 0
     item.position = last_position + 1
