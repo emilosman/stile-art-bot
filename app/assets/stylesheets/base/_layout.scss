@@ -32,7 +32,7 @@ h2, h3, h4, h5, h6 {
 a {
   cursor: pointer;
   font-family: 'Courier New', Courier, monospace;
-  text-decoration: none;
+  text-decoration: none !important;
   &:hover, &:link, &:active, &:visited {
     text-decoration: none !important;
   }
