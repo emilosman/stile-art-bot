@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.production?
-    default_url_options :host => "moonboardapp.herokuapp.com"
-  else
-    default_url_options :only_path => true
-  end
+  default_url_options :only_path => true
 
   namespace :api do
     resources :boards
