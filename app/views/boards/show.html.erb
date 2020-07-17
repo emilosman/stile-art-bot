@@ -2,7 +2,7 @@
   <%= @board.title %>
 
   <div class="d-inline board-header">
-    <a>
+    <a class="bw-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405.526 405.526"><path d="M202.764 0C90.958 0 0 90.958 0 202.763c0 111.809 90.958 202.764 202.763 202.764 111.808 0 202.763-90.955 202.763-202.764C405.526 90.958 314.571 0 202.764 0zM22.952 202.763c0-99.146 80.665-179.811 179.812-179.811v359.623c-99.148-.001-179.812-80.665-179.812-179.812z"/></svg>
     </a>
     <%= link_to download_board_path(@board), method: :post, data: { "no-turbolink" => true } do %>
