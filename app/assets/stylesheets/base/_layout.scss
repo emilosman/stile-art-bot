@@ -179,8 +179,10 @@ a {
   }
 }
 
-.bw-button {
-  cursor: pointer;
+.board-header {
+  a {
+    cursor: pointer;
+  }
   svg {
     width: 25px;
     height: 25px;

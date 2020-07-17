@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:edit, :items, :destroy]
+  include ActionController::Live
+
+  before_action :find_board, only: [:edit, :items, :destroy, :download]
 
   def index
     if Rails.env.production?
@@ -54,6 +56,33 @@ class BoardsController < ApplicationController
     @board = Board.find_by(share_id: params[:id])
     @items = @board.items.page(params[:page])
     render 'show'
+  end
+
+  def download
+    zipname = "#{@board.title} #{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.zip".gsub('"', '\"') # escape quotes
+    disposition = ActionDispatch::Http::ContentDisposition.format(disposition: "attachment", filename: zipname)
+  
+    response.headers["Content-Disposition"] = disposition
+    response.headers["Content-Type"] = "application/zip"
+    response.headers.delete("Content-Length")
+    response.headers["Cache-Control"] = "no-cache"
+    response.headers["Last-Modified"] = Time.now.httpdate.to_s
+    response.headers["X-Accel-Buffering"] = "no"
+
+    writer = ZipTricks::BlockWrite.new do |chunk|
+      response.stream.write(chunk)
+    end
+    ZipTricks::Streamer.open(writer) do |zip|
+      @board.items.each do |item|
+        zip.write_deflated_file(item.image.filename.to_s) do |file_writer|
+          item.image.blob.download do |chunk|
+            file_writer << chunk
+          end
+        end
+      end
+    end
+  ensure
+    response.stream.close
   end
 
   private

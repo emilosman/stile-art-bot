@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :boards, except: [:show] do
     member do
       get 'items'
+      post 'download'
     end
   end
 

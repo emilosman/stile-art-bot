@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "aws-sdk-s3", require: false
 gem 'rack-cors'
 gem 'kaminari'
+gem 'zip_tricks'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
