@@ -1,4 +1,4 @@
-A moodboard inspired by `gomoodboard`. Built with Rails and Vue.js.
+## A moodboard inspired by `gomoodboard`. Built with Rails and Vue.js.
 
 What you'll need to run this on your computer:
 - [`ruby`](https://www.ruby-lang.org/en/)
