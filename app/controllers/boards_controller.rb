@@ -51,7 +51,7 @@ class BoardsController < ApplicationController
       @items = @board.items
     end
 
-    render json: @items.to_json( {methods: :image_url} ), status: 200
+    render json: @items.to_json( {methods: [:image_url, :thumbnail_url]} ), status: 200
   end
 
   def share

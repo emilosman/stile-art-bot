@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   def image_url
     url_for(image) if image.present?
   end
+
+  def thumbnail_url
+    url_for(image.variant(resize: '500x')) if image.present?
+  end
 end

@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 gem 'kaminari'
 gem 'zip_tricks'
+gem 'mini_magick'
 
 # Storage
 gem 'cloudinary', require: true
