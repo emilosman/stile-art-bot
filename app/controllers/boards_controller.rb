@@ -18,12 +18,15 @@ class BoardsController < ApplicationController
   def create
     session[:board_ids] = [] unless session[:board_ids].present?
 
-    board = Board.create(title: board_params[:title])
+    board = Board.new(title: board_params[:title])
 
-    session[:board_ids] << board.id
-
-    redirect_to edit_board_path(board)
+    if board.save!
+      session[:board_ids] << board.id
+      redirect_to edit_board_path(board)
+    end
   end
+
+  def edit;end
 
   def destroy
     @board.delete
