@@ -16,7 +16,7 @@ gem 'kaminari'
 gem 'zip_tricks'
 
 # Storage
-gem 'cloudinary', require: false
+gem 'cloudinary', require: true
 gem 'activestorage-cloudinary-service'
 
 group :development, :test do
