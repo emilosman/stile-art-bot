@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     item.position = last_position + 1
     item.save!
 
-    render json: item.to_json({methods: :image_url}), status: 200
+    render json: item.to_json({methods: [:image_url, :thumbnail_url]}), status: 200
   end
 
   def update
