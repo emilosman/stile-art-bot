@@ -16,7 +16,7 @@
         <div class="comment-overlay" v-if="item.text">
           {{item.text}}
         </div>
-        <img v-if="item.thumbnail_url" :src="item.thumbnail_url"/>
+        <img v-if="item.thumbnail_url" width=500 :src="item.thumbnail_url"/>
       </a>
     </div>
   </div>

@@ -5,7 +5,7 @@
       itemSelector: '.dashboard-item',
       columnWidth: '.grid-sizer',
       gutter: '.gutter-sizer',
-      stagger: 30
+      stagger: 0
     }"
     @layoutComplete="layoutComplete()"
     @dragItemPositioned="updateOrder()"
