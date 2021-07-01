@@ -72,7 +72,7 @@
 
         let itemElements = this.$el.packery.getItemElements()
 
-        let orderedItems = itemElements.reverse().map(function(item, index){
+        let orderedItems = itemElements.map(function(item, index){
           return({item_id: item.dataset.id, position: index})
         })
 
@@ -83,7 +83,7 @@
     },
     computed: {
       orderedItems: function () {
-        return this.items.sort((a, b) => parseFloat(b.position) - parseFloat(a.position));
+        return this.items.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
       },
       showEmptyMessage: function() {
         return this.items.length == 0 && !this.editing
