@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>moonboard</title>
+    <title>moonboard <%= "| #{@board.presence.try(:title)}" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
