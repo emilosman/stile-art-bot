@@ -18,4 +18,8 @@ class User < ApplicationRecord
     # user.skip_confirmation!
     end
   end
+
+  def email_required?
+    false
+  end
 end
