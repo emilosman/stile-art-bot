@@ -20,6 +20,12 @@ gem 'mini_magick'
 gem 'cloudinary', require: true
 gem 'activestorage-cloudinary-service'
 
+## Auth
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
