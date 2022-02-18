@@ -1,4 +1,5 @@
 class Board < ApplicationRecord
+  belongs_to :user
   has_many :items, dependent: :destroy
 
   scope :with_items, -> { joins(:items).where.not(items: { id: nil }).uniq }
