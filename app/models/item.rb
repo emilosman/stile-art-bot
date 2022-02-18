@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_one_attached :image, dependent: :destroy
 
   default_scope { order(position: :asc) }
+  scope :random, -> { order('RANDOM()').first }
 
   def image_url
     url_for(image) if image.present?

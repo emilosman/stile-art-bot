@@ -1,36 +1,9 @@
 class BoardsController < ApplicationController
   include ActionController::Live
 
-  before_action :find_board, only: [:edit, :items, :destroy, :download]
+  before_action :find_board
 
-  def index
-    if Rails.env.production?
-      @boards = session[:board_ids].present? ? Board.where(id: session[:board_ids]).with_items : []
-    else
-      @boards = Board.with_items
-    end
-  end
-
-  def new
-    @board = Board.new
-  end
-
-  def create
-    board = Board.new(title: board_params[:title])
-    if board.save!
-      redirect_to edit_board_path(board)
-    end
-  end
-
-  def edit
-    session[:board_ids] = [] unless session[:board_ids].present?
-    session[:board_ids] << @board.id
-  end
-
-  def destroy
-    @board.delete
-    redirect_to boards_path
-  end
+  def index;end
 
   def update
     if params[:orderedItems]
@@ -52,12 +25,6 @@ class BoardsController < ApplicationController
     end
 
     render json: @items.to_json( {methods: [:image_url, :thumbnail_url]} ), status: 200
-  end
-
-  def share
-    @board = Board.find_by(share_id: params[:id])
-    @items = @board.items.page(params[:page])
-    render 'show'
   end
 
   def download
@@ -89,18 +56,6 @@ class BoardsController < ApplicationController
 
   private
   def find_board
-    @board = Board.find params[:id]
-  end
-
-  def board_params
-    params.require(:board).permit(:title, :position)
-  end
-
-  def authenticate_user
-    if Rails.env.production?
-      authenticate_or_request_with_http_basic do |name, password|
-        name == ENV['USERNAME'] && password == ENV['PASSWORD']
-      end
-    end
+    @board = current_user.board
   end
 end

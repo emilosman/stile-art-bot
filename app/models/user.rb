@@ -37,5 +37,10 @@ class User < ApplicationRecord
       access_token: access_token,
       access_token_secret: access_token_secret
     )
+
+    Board.find_or_create_by(
+      user_id: id,
+      title: name
+    )
   end
 end

@@ -1,12 +1,1 @@
-<% if @boards.present? %>
-  <div class="mt-4 mb-2">This list is visible only to you.</div>
-  <ul class="mb-4">
-    <% @boards.each do |board| %>
-      <li>
-        <%= link_to board.title, share_path(board.share_id) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= link_to 'new board', new_board_path %>
+<board-editor></board-editor>

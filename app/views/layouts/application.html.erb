@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>STILE Twitter art bot</title>
+    <title>STILE art bot</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,8 +19,13 @@
   <body>
     <div class="container-fluid" id="app">
       <h1>
-        <%= current_user.presence.try(:username) || "STILE Twitter art bot" %>
+        STILE art bot
       </h1>
+
+      <h2>
+        <%= current_user.presence.try(:username) %>
+      </h2>
+
       <%= yield %>
     </div>
   </body>

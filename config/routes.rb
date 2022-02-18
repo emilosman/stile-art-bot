@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  default_url_options :only_path => true
+  default_url_options only_path: false
+  default_url_options host: "localhost:3000"
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions' }
 
