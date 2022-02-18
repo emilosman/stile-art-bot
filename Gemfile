@@ -15,6 +15,7 @@ gem 'rack-cors'
 gem 'kaminari'
 gem 'zip_tricks'
 gem 'mini_magick'
+gem 'pry'
 
 # Storage
 gem 'cloudinary', require: true
@@ -25,6 +26,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem "omniauth-rails_csrf_protection"
+gem 'twitter', github: 'sferik/twitter'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

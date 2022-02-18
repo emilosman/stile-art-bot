@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_075621) do
+ActiveRecord::Schema.define(version: 2022_02_18_091427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,28 @@ ActiveRecord::Schema.define(version: 2022_02_18_075621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position"
+    t.integer "twitter_share_count", default: 0
+    t.integer "telegram_share_count", default: 0
+    t.datetime "twitter_last_shared"
+    t.datetime "telegram_last_shared"
     t.index ["board_id"], name: "index_items_on_board_id"
+    t.index ["telegram_last_shared"], name: "index_items_on_telegram_last_shared"
+    t.index ["telegram_share_count"], name: "index_items_on_telegram_share_count"
+    t.index ["twitter_last_shared"], name: "index_items_on_twitter_last_shared"
+    t.index ["twitter_share_count"], name: "index_items_on_twitter_share_count"
+  end
+
+  create_table "twitter_bots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "consumer_key"
+    t.string "consumer_secret"
+    t.string "access_token"
+    t.string "access_token_secret"
+    t.string "name", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_twitter_bots_on_name"
+    t.index ["user_id"], name: "index_twitter_bots_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
