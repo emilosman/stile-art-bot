@@ -14,15 +14,7 @@ class BoardsController < ApplicationController
   end
 
   def items
-    if PAGINATE
-      if params[:all]
-        @items = @board.items
-      else
-        @items = @board.items.page(params[:page])
-      end
-    else
-      @items = @board.items
-    end
+    @items = @board.items.by_position
 
     render json: @items.to_json( {methods: [:image_url, :thumbnail_url]} ), status: 200
   end

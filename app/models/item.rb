@@ -5,8 +5,9 @@ class Item < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
 
-  default_scope { order(position: :asc) }
-  scope :random, -> { order('RANDOM()').first }
+  scope :by_position, -> { order(position: :asc) }
+  scope :last_shared, -> { where.not(twitter_last_shared: nil).order(twitter_last_shared: :desc).first }
+  scope :random,      -> { order('RANDOM()').first }
 
   def image_url
     if image.present?

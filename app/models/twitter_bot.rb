@@ -3,24 +3,27 @@ class TwitterBot < ApplicationRecord
 
   def post_random_artwork
     if post_new_artwork.nil?
-      item =
-        user.board.items.where('twitter_last_shared < (?)', (Time.now - 4.weeks)).random.presence ||
-        user.board.items.random
-      post_artwork(item) if item.present?
+      items = user.board.items
+      selection =
+        items.where('twitter_last_shared < (?)', (Time.now - 4.weeks)).random.presence ||
+        items.where.not(id: items.last_shared.presence.try(:id)).random.presence ||
+        items.random
+      post_artwork(selection) if selection.present?
     end
   end
   
   def post_new_artwork
-    item = user.board.items.where(twitter_share_count: 0).random
-    post_artwork(item) if item.present?
+    items = user.board.items
+    selection = items.where(twitter_share_count: 0).random
+    post_artwork(selection) if selection.present?
   end
   
-  def post_artwork(item)
-    item.increment!(:twitter_share_count)
-    item.update_attribute(:twitter_last_shared, Time.now)
-    file = URI.open(item.image_url)
+  def post_artwork(selection)
+    selection.increment!(:twitter_share_count)
+    selection.update_attribute(:twitter_last_shared, Time.now)
+    file = URI.open(selection.image_url)
 
-    twitter_client.update_with_media(item.text, file)
+    twitter_client.update_with_media(selection.text, file)
   end
 
   def test_tweet!
