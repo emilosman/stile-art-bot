@@ -21,11 +21,10 @@
       <h1>
         STILE art bot
       </h1>
-
+      <%= button_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-md btn-primary float-right" if current_user%>
       <h2>
         <%= current_user.presence.try(:username) %>
       </h2>
-
       <%= yield %>
     </div>
   </body>
