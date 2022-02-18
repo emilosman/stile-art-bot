@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     item = Item.new(
       board_id: params[:board_id],
       position: params[:position],
-      text: filename
+      text: filename.sub(/(?<=.)\..*/, '')
     )
 
     item.image.attach(io: image, filename: filename)
