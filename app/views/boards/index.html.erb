@@ -1,7 +1,3 @@
- <a class="tower" href="https://emilosman.com">
-  <%= image_tag "tower_lineart_light_blue.png" %>
-</a>
-
 <% if @boards.present? %>
   <div class="mt-4 mb-2">This list is visible only to you.</div>
   <ul class="mb-4">
@@ -14,5 +10,3 @@
 <% end %>
 
 <%= link_to 'new board', new_board_path %>
-
-<%= current_user.presence %>

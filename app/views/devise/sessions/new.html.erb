@@ -1,8 +1,19 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="actions">
-    <%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path, method: :post %>
-  </div>
+  <p class="actions">
+    <%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-lg btn-primary" %>
+  </p>
 <% end %>
 
+<p>
+  By signing in with your Twitter account you are granting the App the ability to post on your behalf.
+  <br>
+  You may revoke access anytime, on the Twitter <a href="https://twitter.com/settings/connected_apps">Connected apps</a> page.
+</p>
+
+<p>
+  This is an experimental App.
+  <br>
+  The author takes no responsibility if your account gets suspended, rate limited or locked.
+  <br>
+  Use at your own risk.
+</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>moonboard <%= "| #{@board.presence.try(:title)}" %></title>
+    <title>STILE Twitter art bot</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,7 +19,7 @@
   <body>
     <div class="container-fluid" id="app">
       <h1>
-        <%= link_to "moonboard", root_path %>
+        <%= current_user.presence.try(:username) || "STILE Twitter art bot" %>
       </h1>
       <%= yield %>
     </div>
