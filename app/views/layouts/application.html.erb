@@ -22,9 +22,12 @@
         STILE art bot
       </h1>
       <%= button_to "log out", destroy_user_session_path, method: :delete, class: "btn btn-md btn-primary float-right" if current_user%>
-      <h2>
-        <%= link_to current_user.username, "https://twitter.com/#{current_user.username}" if current_user.present? %>
-      </h2>
+      <% if current_user.present? %>
+        <h2>
+          <%= image_tag current_user.image if current_user.image %>
+          <%= link_to current_user.username, "https://twitter.com/#{current_user.username}" %>
+        </h2>
+      <% end %>
       <%= yield %>
     </div>
   </body>

@@ -17,8 +17,8 @@ class User < ApplicationRecord
       user.username = auth.info.nickname
       user.access_token = auth.credentials.token
       user.access_token_secret = auth.credentials.secret
+      user.image = auth.info.image
 
-      # user.image = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
