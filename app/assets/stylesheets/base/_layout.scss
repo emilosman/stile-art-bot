@@ -6,11 +6,13 @@ $columnFull: ($columnQuarter * 4) + ($gap * 3);
 
 html {
   overflow-y: scroll;
+  background: url(asset_path('patterns.jpg'));
+  background-repeat: repeat;
+  background-color: #202020;
 }
 
 body {
   padding: $gap;
-  background-color: #202020;//gainsboro;
   color: gainsboro;
 }
 
