@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one :board
   has_one :twitter_bot
+  has_many :items, through: :board
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

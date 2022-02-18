@@ -1,9 +1,9 @@
 class TwitterBot < ApplicationRecord
   belongs_to :user
+  has_many :items, through: :user
 
   def post_random_artwork
     if post_new_artwork.nil?
-      items = user.board.items
       selection =
         items.where('twitter_last_shared < (?)', (Time.now - 4.weeks)).random.presence ||
         items.where.not(id: items.last_shared.presence.try(:id)).random.presence ||
@@ -13,7 +13,6 @@ class TwitterBot < ApplicationRecord
   end
   
   def post_new_artwork
-    items = user.board.items
     selection = items.where(twitter_share_count: 0).random
     post_artwork(selection) if selection.present?
   end
