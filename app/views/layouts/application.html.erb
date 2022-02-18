@@ -24,7 +24,7 @@
       <%= button_to "log out", destroy_user_session_path, method: :delete, class: "btn btn-md btn-primary float-right" if current_user%>
       <% if current_user.present? %>
         <h2>
-          <%= image_tag current_user.image if current_user.image %>
+          <%= image_tag current_user.image, class: "profile-image" if current_user.image %>
           <%= link_to current_user.username, "https://twitter.com/#{current_user.username}" %>
         </h2>
       <% end %>
