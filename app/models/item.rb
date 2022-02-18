@@ -9,7 +9,9 @@ class Item < ApplicationRecord
   scope :random, -> { order('RANDOM()').first }
 
   def image_url
-    url_for(image) if image.present?
+    if image.present?
+      Rails.env.production? ? image.service_url : url_for(image) 
+    end
   end
 
   def thumbnail_url
