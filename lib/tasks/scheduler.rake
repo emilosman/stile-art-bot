@@ -5,6 +5,7 @@ namespace :tweets do
     TwitterBot.find_by(name: args[:bot_name]).post_random_artwork
   end
 
+  desc 'All bots post'
   task post_random_all_bots: :environment do
     TwitterBot.all.map{ |bot| bot.post_random_artwork }
   end
