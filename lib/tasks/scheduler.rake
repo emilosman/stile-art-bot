@@ -7,6 +7,12 @@ namespace :tweets do
 
   desc 'All bots post'
   task post_random_all_bots: :environment do
-    TwitterBot.all.map{ |bot| bot.post_random_artwork }
+    TwitterBot.all.each do |bot|
+      begin
+        bot.post_random_artwork
+      rescue => e
+        print e
+      end
+    end
   end
 end
