@@ -1,8 +1,7 @@
-$gap: 2%;
-$columnQuarter: 23%;
-$columnThird: 31%;
-$columnHalf: ($columnQuarter * 2) + $gap;
-$columnFull: ($columnQuarter * 4) + ($gap * 3);
+$columnQuarter: 25%;
+$columnThird: 33%;
+$columnHalf: ($columnQuarter * 2);
+$columnFull: ($columnQuarter * 4);
 
 html {
   overflow-y: scroll;
@@ -12,7 +11,7 @@ html {
 }
 
 body {
-  padding: $gap;
+  padding: 0;
   color: gainsboro;
 }
 
@@ -39,10 +38,6 @@ a {
   &:hover, &:link, &:active, &:visited {
     text-decoration: none !important;
   }
-}
-
-.gutter-sizer {
-  width: $gap;
 }
 
 .dashboard {

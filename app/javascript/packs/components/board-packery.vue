@@ -4,7 +4,7 @@
     v-packery="{
       itemSelector: '.dashboard-item',
       columnWidth: '.grid-sizer',
-      gutter: '.gutter-sizer',
+      gutter: 0,
       stagger: 0
     }"
     @layoutComplete="layoutComplete()"
