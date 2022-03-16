@@ -6,6 +6,8 @@ Drag & drop upload for easy gallery management.
 Sign in with Twitter OAuth and automate an unlimited number of accounts.
 
 ## How to use
+[![example video](https://img.youtube.com/vi/aSjfVGTu1LQ/0.jpg)](https://www.youtube.com/watch?v=aSjfVGTu1LQ)
+
 1. Sign in with the Twitter account you want to automate
 2. Drag & drop the images from a folder onto the the upload field
 3. That's it!
