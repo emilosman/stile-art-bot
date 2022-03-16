@@ -29,3 +29,7 @@ Here are the rules for selecting images to tweet out:
 
 ### Tweet random artwork using all bots
 `rake 'tweets:post_random_all_bots'`
+
+## Development
+Created with Ruby on Rails and Vue.js.  
+Forked from [emilosman/moonboard](https://github.com/emilosman/moonboard)
