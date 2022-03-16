@@ -1,4 +1,4 @@
-## STILE art bot
+# STILE art bot
 The app randomly selects from a pool of images and tweets them out.  
 Intended to automate art accounts.  
 Drag & drop upload for easy gallery management.
@@ -22,7 +22,7 @@ Here are the rules for selecting images to tweet out:
 ## Examples of bot rake tasks
 
 ### Tweet a random artwork on a specific account
-- rake 'tweets:post_random_artwork[e2d48a]'
+- `rake 'tweets:post_random_artwork[e2d48a]'`
 
 ### Tweet random artwork using all bots
-- rake 'tweets:post_random_all_bots'
+- `rake 'tweets:post_random_all_bots'`
