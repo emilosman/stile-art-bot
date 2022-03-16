@@ -24,8 +24,8 @@ Here are the rules for selecting images to tweet out:
 
 ## Examples of bot rake tasks
 
-### Tweet a random artwork on a specific account
-- `rake 'tweets:post_random_artwork[e2d48a]'`
+### Tweet a random artwork on a specific account (username: e2d48a)
+`rake 'tweets:post_random_artwork[e2d48a]'`
 
 ### Tweet random artwork using all bots
-- `rake 'tweets:post_random_all_bots'`
+`rake 'tweets:post_random_all_bots'`
