@@ -1,5 +1,5 @@
 # STILE art bot
-The app randomly selects from a pool of images and tweets them out.  
+The app selects randomly from a pool of images and tweets them out.  
 Intended to automate art accounts.  
 Drag & drop upload for easy gallery management.
 
