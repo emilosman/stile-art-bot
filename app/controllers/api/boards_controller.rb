@@ -3,7 +3,7 @@ module Api
     before_action :find_board, except: :index
 
     def index
-      @boards = Board.with_items
+      @boards = [current_user.board]
       render json: @boards, status: 200
     end
 
