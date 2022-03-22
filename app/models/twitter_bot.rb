@@ -22,7 +22,7 @@ class TwitterBot < ApplicationRecord
     selection.update_attribute(:twitter_last_shared, Time.now)
     file = URI.open(selection.image_url)
 
-    twitter_client.update_with_media(selection.text, file)
+    twitter_client.update_with_media("", file)
   end
 
   def test_tweet!
